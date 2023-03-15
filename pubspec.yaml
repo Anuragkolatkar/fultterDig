@@ -45,6 +45,7 @@ dependencies:
   gradient_widgets: ^0.6.0
   gradient_borders: ^1.0.0
   expansion_widget: ^0.0.3
+  get: ^4.6.1
 
 dev_dependencies:
   flutter_test:

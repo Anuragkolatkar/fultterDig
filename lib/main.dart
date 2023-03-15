@@ -1,4 +1,6 @@
 import 'package:digiyug_app/digiyug.dart';
+import 'package:digiyug_app/digiyugGold.dart';
+import 'package:digiyug_app/digiyugPlan.dart';
 import 'package:digiyug_app/digiyugSea.dart';
 import 'package:digiyug_app/expanded.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         //"/": (context) => DigiyugSea(),
-        "/": (context) => Expanded_page(),
+        //"/": (context) => Expanded_page(),
+        "/": (context) => DigiyugPlan(),
+        // "/": (context) => DigiyugGold(),
       },
     );
   }
