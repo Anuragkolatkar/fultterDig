@@ -6,14 +6,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/input_borders/gradient_outline_input_border.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 
-class DigiyugSea extends StatefulWidget {
-  const DigiyugSea({super.key});
+class DigiyugFaq extends StatefulWidget {
+  const DigiyugFaq({super.key});
 
   @override
-  State<DigiyugSea> createState() => _DigiyugSeaState();
+  State<DigiyugFaq> createState() => _DigiyugFaqState();
 }
 
-class _DigiyugSeaState extends State<DigiyugSea> {
+class _DigiyugFaqState extends State<DigiyugFaq> {
   late bool _custom = false;
   @override
   Widget build(BuildContext context) {

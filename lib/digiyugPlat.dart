@@ -57,7 +57,9 @@ class _DigiyugPlatState extends State<DigiyugPlat> {
                           "Platinum",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 64, fontWeight: FontWeight.w600),
+                              fontSize: 60,
+                              fontFamily: 'Hebrew',
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     ],
