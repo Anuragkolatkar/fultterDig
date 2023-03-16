@@ -51,6 +51,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   expansion_card: ^0.1.0
   expansion_tile_card: ^2.0.0
+  page_indicator: ^0.4.1
 
 dev_dependencies:
   flutter_test:

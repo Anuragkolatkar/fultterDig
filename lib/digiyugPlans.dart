@@ -19,37 +19,22 @@ class _SliderrState extends State<Sliderr> {
   int _currentPage = 0;
   late PageController _pageController;
   var controller = PageController(
-    viewportFraction: 0.8,
+    viewportFraction: 0.9,
   );
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // Timer.periodic(Duration(seconds: 5), (Timer timer) {
-    //   if (_currentPage < 2) {
-    //     _currentPage++;
-    //   } else {
-    //     _currentPage = 0;
-    //   }
-    //   _pageController.animateToPage(_currentPage,
-    //       duration: Duration(microseconds: 300), curve: Curves.easeIn);
-    //  });
+
     _pageController =
         PageController(initialPage: _currentPage, viewportFraction: 1);
     controller = new PageController(
-      viewportFraction: 0.8,
+      viewportFraction: 1,
     );
   }
 
-  // _OnPageChanged(int index) {
-  //   setState(() {
-  //     _currentPage = index;
-  //   });
-  // }
-
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _pageController.dispose();
   }
@@ -60,77 +45,48 @@ class _SliderrState extends State<Sliderr> {
       body: Column(
         children: [
           Container(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 70, left: 10),
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Card(
-                      color: Colors.white,
-                      child: SizedBox(
-                        height: 40,
-                        width: 90,
-                        child: Text(
-                          "Anurag",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18),
+            child: Flexible(
+              child: ListView.builder(itemBuilder: (context, _) {
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Planes(
+                          plantext: "1 Month",
+                          onTap: () {},
                         ),
                       ),
-                    ),
-                    onTap: () {},
-                  ),
-                  InkWell(
-                    child: Card(
-                      color: Colors.white,
-                      child: SizedBox(
-                        height: 40,
-                        width: 90,
-                        child: Text(
-                          "Anurag",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18),
+                      Container(
+                        child: Planes(
+                          plantext: "3 Months",
+                          onTap: () {},
                         ),
                       ),
-                    ),
-                    onTap: () {},
-                  ),
-                  InkWell(
-                    child: Card(
-                      color: Colors.white,
-                      child: SizedBox(
-                        height: 40,
-                        width: 90,
-                        child: Text(
-                          "Anurag",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18),
+                      Container(
+                        child: Planes(
+                          plantext: "6 Months",
+                          onTap: () {},
                         ),
                       ),
-                    ),
-                    onTap: () {},
-                  ),
-                  InkWell(
-                    child: Card(
-                      color: Colors.white,
-                      child: SizedBox(
-                        height: 40,
-                        width: 90,
-                        child: Text(
-                          "Anurag",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18),
+                      Container(
+                        child: Planes(
+                          plantext: "12 Months",
+                          onTap: () {},
                         ),
                       ),
-                    ),
-                    onTap: () {},
+                    ],
                   ),
-                ],
-              ),
+                );
+              }),
             ),
+          ),
+          const SizedBox(
+            height: 1,
           ),
           Container(
             child: AspectRatio(
-              aspectRatio: 0.60,
+              aspectRatio: 0.58,
               child: PageView.builder(
                   itemCount: slideList.length,
                   controller: _pageController,
@@ -154,134 +110,134 @@ class _SliderrState extends State<Sliderr> {
       body: Stack(
         //alignment: AlignmentDirectional.bottomCenter,
         children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
-              child: SizedBox(
-                height: Get.height * .9,
-                width: Get.width * 1,
-                child: Container(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      offset: Offset(0, 0),
-                      blurRadius: 66,
-                      spreadRadius: 20,
-                    ),
-                  ]),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+          Padding(
+            padding: const EdgeInsets.only(top: 15, left: 20, right: 20),
+            child: SizedBox(
+              height: Get.height * .8,
+              width: Get.width * 2,
+              child: Container(
+                // ignore: prefer_const_literals_to_create_immutables
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    offset: const Offset(0, 0),
+                    blurRadius: 66,
+                    spreadRadius: 2,
+                  ),
+                ]),
+                child: Card(
+                  elevation: 5,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(top: 21),
+                            child: Text(
+                              // slideList[index].text1,
+                              data.text1,
+                              style: const TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height * .02,
+                          ),
+                          Container(
+                            width: Get.width * .8,
+                            height: Get.height * .15,
+                            decoration: BoxDecoration(color: data.color),
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Text(
+                              //slideList[index].title,
+                              data.title,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.w600,
+                                  color: data.colortext),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 44,
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(top: 21),
-                              child: Text(
-                                // slideList[index].text1,
-                                data.text1,
-                                style: TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.w700),
+                            ListTile(
+                              //leading: MyBullet(),
+                              title: Text(
+                                "\u2022 ${data.desc2}",
+                                style: const TextStyle(
+                                    color: Color(0xff858585),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 17),
                               ),
                             ),
-                            SizedBox(
-                              height: 29,
-                            ),
-                            Container(
-                              width: Get.width * .8,
-                              height: Get.height * .14,
-                              decoration: BoxDecoration(color: data.color),
-                              padding: EdgeInsets.only(top: 15),
-                              child: Text(
-                                //slideList[index].title,
-                                data.title,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 60, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 48,
-                        ),
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                //leading: MyBullet(),
-                                title: Text(
-                                  "\u2022 ${data.desc2}",
-                                  style: TextStyle(
+                            ListTile(
+                              //  leading: MyBullet(),
+                              title: Text('\u2022 ${data.desc3}',
+                                  style: const TextStyle(
                                       color: Color(0xff858585),
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 17),
-                                ),
-                              ),
-                              ListTile(
-                                //  leading: MyBullet(),
-                                title: Text('\u2022 ${data.desc3}',
-                                    style: TextStyle(
-                                        color: Color(0xff858585),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 17)),
-                              ),
-                              ListTile(
-                                //  leading: MyBullet(),
-                                title: Text('\u2022 ${data.text2}',
-                                    style: TextStyle(
-                                        color: Color(0xff858585),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 17)),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: Get.height * .03,
-                        ),
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                // slideList[index].price.toString(),
-                                data.price.toString(),
-                                style: TextStyle(
-                                    fontSize: 64, fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Container(
-                          child: SizedBox(
-                            width: Get.width * .8,
-                            height: 57,
-                            child: ElevatedButton(
-                              child: Text(
-                                // slideList[index].text2,
-                                data.text3,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xffA21B31),
-                              ),
-                              onPressed: () {},
+                                      fontSize: 17)),
                             ),
+                            ListTile(
+                              //  leading: MyBullet(),
+                              title: Text('\u2022 ${data.text2}',
+                                  style: const TextStyle(
+                                      color: Color(0xff858585),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 17)),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: Get.height * .02,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              // slideList[index].price.toString(),
+                              data.price.toString(),
+                              style: const TextStyle(
+                                  fontSize: 64, fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: Get.height * .08,
+                      ),
+                      Container(
+                        child: SizedBox(
+                          width: Get.width * .8,
+                          height: 57,
+                          child: ElevatedButton(
+                            child: Text(
+                              // slideList[index].text2,
+                              data.text3,
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color(0xffA21B31),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -303,3 +259,119 @@ class _SliderrState extends State<Sliderr> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // child: Padding(
+            //   padding: const EdgeInsets.only(top: 65, left: 3),
+            //   child: SingleChildScrollView(
+            //     scrollDirection: Axis.horizontal,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //       children: [
+            //         Container(
+            //           width: 106,
+            //           height: 45,
+            //           margin: EdgeInsets.all(4),
+            //           child: ElevatedButton.icon(
+            //               style: ElevatedButton.styleFrom(
+            //                   side: const BorderSide(
+            //                       color: Color(0xffCACACA), width: 1),
+            //                   backgroundColor: Colors.white),
+            //               onPressed: () {},
+            //               icon: const Icon(
+            //                 Icons.circle_rounded,
+            //                 color: Colors.black,
+            //                 size: 5,
+            //               ),
+            //               label: Text(
+            //                 "1 Month",
+            //                 style: TextStyle(
+            //                     color: Colors.black,
+            //                     fontSize: 12,
+            //                     fontWeight: FontWeight.w600),
+            //               )),
+            //         ),
+            // Container(
+            //   width: 106,
+            //   height: 45,
+            //   margin: EdgeInsets.all(4),
+            //   child: ElevatedButton.icon(
+            //       style: ElevatedButton.styleFrom(
+            //           side: const BorderSide(
+            //               color: Color(0xffCACACA), width: 1),
+            //           backgroundColor: Colors.white),
+            //       onPressed: () {},
+            //       icon: const Icon(
+            //         Icons.circle_rounded,
+            //         color: Colors.black,
+            //         size: 5,
+            //       ),
+            //       label: const Text(
+            //         "3 Months",
+            //         style: TextStyle(
+            //             color: Colors.black,
+            //             fontSize: 12,
+            //             fontWeight: FontWeight.w600),
+            //       )),
+            // ),
+            // Container(
+            //   width: 106,
+            //   height: 45,
+            //   margin: EdgeInsets.all(4),
+            //   child: ElevatedButton.icon(
+            //       style: ElevatedButton.styleFrom(
+            //           side: const BorderSide(
+            //               color: Color(0xffCACACA), width: 1),
+            //           backgroundColor: Color(0xffA21B31)),
+            //       onPressed: () {},
+            //       icon: const Icon(
+            //         Icons.circle_rounded,
+            //         color: Color.fromARGB(255, 255, 255, 255),
+            //         size: 5,
+            //       ),
+            //       label: const Text(
+            //         "6 Months",
+            //         style: TextStyle(
+            //             color: Color.fromARGB(255, 255, 255, 255),
+            //             fontSize: 12,
+            //             fontWeight: FontWeight.w600),
+            //       )),
+            // ),
+            // Container(
+            //   width: 106,
+            //   height: 45,
+            //   margin: EdgeInsets.all(4),
+            //   child: ElevatedButton.icon(
+            //       style: ElevatedButton.styleFrom(
+            //           side: const BorderSide(
+            //               color: Color(0xffCACACA), width: 1),
+            //           backgroundColor: Colors.white),
+            //       onPressed: () {},
+            //       icon: const Icon(
+            //         Icons.circle_rounded,
+            //         color: Colors.black,
+            //         size: 5,
+            //       ),
+            //       label: const Text(
+            //         "12 Months",
+            //         style: TextStyle(
+            //             color: Colors.black,
+            //             fontSize: 12,
+            //             fontWeight: FontWeight.w600),
+            //       )),
+            // ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
